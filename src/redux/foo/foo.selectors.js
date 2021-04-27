@@ -6,3 +6,5 @@ export const selectFoos = createSelector(
   [selectFoo],
   (foo) => foo.foos,
 );
+
+export const ivancito = () => 'ivancito';

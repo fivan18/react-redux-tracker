@@ -1,5 +1,5 @@
 import FooActionTypes from './foo.types';
-import { defaultFoos } from './foo.data'; 
+import { defaultFoos } from './foo.data';
 
 const INITIAL_STATE = {
   foos: defaultFoos,
