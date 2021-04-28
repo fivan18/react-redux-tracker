@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FormInput = ({
-  name, type, handleChange, value,
+  name, type, handleChange, value, placeholder,
 }) => (
   <div>
     <input
@@ -10,6 +10,7 @@ const FormInput = ({
       type={type}
       value={value}
       onChange={handleChange}
+      placeholder={placeholder}
     />
   </div>
 );
@@ -19,6 +20,7 @@ FormInput.propTypes = {
   type: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };
 
 export default FormInput;
