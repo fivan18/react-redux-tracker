@@ -8,6 +8,7 @@ import NotFound from './pages/not-found';
 import Daypicker from './pages/daypicker';
 import Routine from './pages/routine';
 import Header from './layout/header';
+import Progress from './pages/progress';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
         <Route path="/daypicker" component={Daypicker} />
+        <Route path="/progress" component={Progress} />
         <Route path="/routine/:routineId" component={Routine} />
         <Route path="/*" component={NotFound} />
       </Switch>
