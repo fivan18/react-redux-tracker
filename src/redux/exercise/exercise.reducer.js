@@ -1,8 +1,9 @@
 import ExerciseActionTypes from './exercise.types';
 import { defaultExercises } from './exercise.data';
+import { mapExercisesToChart } from './exercise.utils';
 
 const INITIAL_STATE = {
-  exercises: defaultExercises,
+  exercises: mapExercisesToChart(defaultExercises),
 };
 
 const ExerciseReducer = (state = INITIAL_STATE, action) => {
@@ -10,7 +11,7 @@ const ExerciseReducer = (state = INITIAL_STATE, action) => {
     case ExerciseActionTypes.ADD_EXERCISES:
       return {
         ...state,
-        exercises: action.payload,
+        exercises: mapExercisesToChart(action.payload),
       };
     default:
       return state;
