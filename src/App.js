@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import HomePage from './pages/homepage';
 import SignIn from './pages/sign-in';
@@ -9,22 +12,40 @@ import Daypicker from './pages/daypicker';
 import Routine from './pages/routine';
 import Header from './layout/header';
 import Progress from './pages/progress';
+import PrivateRoute from './components/private-route';
+import { selectChecked, selectAuthenticated } from './redux/session/session.selectors';
 
-function App() {
-  return (
-    <div className="app">
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/signin" component={SignIn} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/daypicker" component={Daypicker} />
-        <Route path="/progress" component={Progress} />
-        <Route path="/routine/:routineId" component={Routine} />
-        <Route path="/*" component={NotFound} />
-      </Switch>
-    </div>
-  );
-}
+const App = ({ authenticated, checked }) => (
+  <div className="app">
+    <Header />
+    { checked
+          && (
+          <Switch>
+            <PrivateRoute exact path="/" component={HomePage} authenticated={authenticated} />
+            <PrivateRoute path="/daypicker" component={Daypicker} authenticated={authenticated} />
+            <PrivateRoute path="/progress" component={Progress} authenticated={authenticated} />
+            <PrivateRoute path="/routine/:routineId" component={Routine} authenticated={authenticated} />
+            <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/*" component={NotFound} />
+          </Switch>
+          )}
+  </div>
+);
 
-export default App;
+const { bool } = PropTypes;
+
+App.propTypes = {
+  authenticated: bool.isRequired,
+  checked: bool.isRequired,
+};
+
+const mapStateToProps = createStructuredSelector({
+  authenticated: selectAuthenticated,
+  checked: selectChecked,
+});
+
+export default connect(
+  mapStateToProps,
+  null,
+)(App);
