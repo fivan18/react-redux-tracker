@@ -24,7 +24,7 @@ const PrivateRoute = ({
 );
 
 const {
-  object, bool, string, func,
+  object, bool, string, func, oneOfType,
 } = PropTypes;
 
 PrivateRoute.defaultProps = {
@@ -33,7 +33,11 @@ PrivateRoute.defaultProps = {
 };
 
 PrivateRoute.propTypes = {
-  component: func.isRequired,
+  component: oneOfType([
+    func,
+    // eslint-disable-next-line
+    object,
+  ]).isRequired,
   exact: bool,
   path: string.isRequired,
   authenticated: bool.isRequired,
