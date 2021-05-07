@@ -9,25 +9,25 @@ import { selectAuthenticated, selectUser } from '../redux/session/session.select
 import { logout } from '../redux/session/session.actions';
 
 const Header = ({
-  authenticated, logout, history, user: { id },
+  authenticated, logout, history, user: { username },
 }) => (
   <header className="header">
-    <div>
-      <Link to="/">
-        Logo
+    <div className="header__right-side">
+      <Link className="header__logo" to="/">
+        Track.it
       </Link>
 
-      <nav>
-        <Link to="/daypicker">
+      <nav className="header__nav">
+        <Link className="header__nav__item" to="/daypicker">
           Calendar
         </Link>
       </nav>
     </div>
-    <div>
+    <div className="header__left-side">
       {authenticated ? (
         <div className="dropdown">
           <div className="dropdown__btn">
-            {id}
+            {username}
           </div>
           <div className="dropdown__content">
             <div
@@ -41,7 +41,7 @@ const Header = ({
           </div>
         </div>
       ) : (
-        <Link to="/signin">
+        <Link className="header__signin" to="/signin">
           SIGN IN
         </Link>
       )}
@@ -50,11 +50,11 @@ const Header = ({
 );
 
 Header.defaultProps = {
-  user: { id: -1 },
+  user: { username: '' },
 };
 
 const {
-  bool, func, shape, number,
+  bool, func, shape, string,
 } = PropTypes;
 
 Header.propTypes = {
@@ -64,7 +64,7 @@ Header.propTypes = {
     push: func,
   }).isRequired,
   user: shape({
-    id: number,
+    username: string,
   }),
 };
 
