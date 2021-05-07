@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const SubmitButton = ({ children }) => (
   <button
+    className="sign-in-up__card-button"
     type="submit"
   >
     {children}

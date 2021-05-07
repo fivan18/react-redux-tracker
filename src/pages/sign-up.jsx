@@ -52,38 +52,43 @@ const SignUp = ({ history }) => {
   };
 
   return (
-    <div className="sign-in">
-      <h2>Create an account</h2>
-      <span>Sign up with your username and password</span>
+    <div className="sign-in-up__container">
+      <div className="sign-in-up__card">
+        <h2 className="sign-in-up__card-title">Sign Up</h2>
+        <span className="sign-in-up__card-subtitle">Enter your username and password</span>
 
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          name="username"
-          type="username"
-          handleChange={handleUsernameChange}
-          value={username}
-          placeholder="username"
-        />
-        <FormInput
-          name="password"
-          type="password"
-          value={password}
-          handleChange={handlePasswordChange}
-          placeholder="password"
-        />
+        <form className="sign-in-up__card-form" onSubmit={handleSubmit}>
+          <FormInput
+            id="username"
+            name="username"
+            type="username"
+            handleChange={handleUsernameChange}
+            value={username}
+            placeholder="username"
+          />
+          <FormInput
+            id="password"
+            name="password"
+            type="password"
+            value={password}
+            handleChange={handlePasswordChange}
+            placeholder="password"
+          />
 
-        <FormInput
-          name="confirmPassword"
-          type="password"
-          handleChange={handleConfirmPassword}
-          value={confirmPassword}
-          placeholder="confirm password"
-        />
+          <FormInput
+            id="confirm-password"
+            name="confirmPassword"
+            type="password"
+            handleChange={handleConfirmPassword}
+            value={confirmPassword}
+            placeholder="confirm password"
+          />
 
-        <div>
-          <SubmitButton> Sign up </SubmitButton>
-        </div>
-      </form>
+          <div>
+            <SubmitButton> Sign up </SubmitButton>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

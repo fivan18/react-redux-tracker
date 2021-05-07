@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import FormInput from '../components/form-input';
 import SubmitButton from '../components/submit-button';
@@ -27,29 +27,37 @@ const SignIn = ({ history, login }) => {
   };
 
   return (
-    <div className="sign-in">
-      <h2>I already have an account</h2>
-      <span>Sign in with your username and password</span>
+    <div className="sign-in-up__container">
+      <div className="sign-in-up__card">
+        <h2 className="sign-in-up__card-title">Sign In</h2>
+        <span className="sign-in-up__card-subtitle">Enter your username and password</span>
 
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          name="username"
-          type="username"
-          handleChange={handleUsernameChange}
-          value={username}
-          placeholder="username"
-        />
-        <FormInput
-          name="password"
-          type="password"
-          value={password}
-          handleChange={handlePasswordChange}
-          placeholder="password"
-        />
-        <div>
-          <SubmitButton> Sign in </SubmitButton>
-        </div>
-      </form>
+        <form className="sign-in-up__card-form" onSubmit={handleSubmit}>
+          <FormInput
+            id="username"
+            name="username"
+            type="username"
+            handleChange={handleUsernameChange}
+            value={username}
+            placeholder="username"
+          />
+          <FormInput
+            id="password"
+            name="password"
+            type="password"
+            value={password}
+            handleChange={handlePasswordChange}
+            placeholder="password"
+          />
+          <div>
+            <SubmitButton> Sign in </SubmitButton>
+            <small className="sign-in-up__signup">
+              Don&apos;t have an account?&nbsp;
+              <Link to="signup">Sign up</Link>
+            </small>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
