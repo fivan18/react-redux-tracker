@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { sessionReducer } from 'redux-react-session';
 
-import fooReducer from './foo/foo.reducer';
+import exerciseReducer from './exercise/exercise.reducer';
 
 const rootReducer = combineReducers({
-  foo: fooReducer,
+  exercise: exerciseReducer,
   session: sessionReducer,
 });
 

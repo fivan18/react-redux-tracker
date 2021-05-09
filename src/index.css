@@ -1,27 +1,9 @@
-body {
-  margin: 0;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'HelveticaNeueBold';
+  src: local('HelveticaNeueBold'), url(./assets/FreeSansBold.ttf) format('ttf');
 }
 
-code {
-  font-family:
-    source-code-pro,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Courier New',
-    monospace;
+@font-face {
+  font-family: 'HelveticaNeueLight';
+  src: local('HelveticaNeueLight'), url(./assets/Nimbus-Sans-D-OT-Light_32752.ttf) format('ttf');
 }

@@ -1,72 +1,83 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { sessionService } from 'redux-react-session';
-import axios from 'axios';
+
 import PropTypes from 'prop-types';
 
-import { selectAuthenticated } from '../redux/session/session.selectors';
+import { selectAuthenticated, selectUser } from '../redux/session/session.selectors';
+import { logout } from '../redux/session/session.actions';
 
-const Header = ({ authenticated }) => {
-  const logout = () => {
-    sessionService.loadSession()
-      .then(({ token }) => {
-        axios({
-          method: 'delete',
-          url: 'http://localhost:3000/logout',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-          .then(() => {
-            sessionService.deleteSession()
-              .then(() => {
-                sessionService.deleteUser();
-              });
-          })
-          .catch((err) => {
-            // eslint-disable-next-line
-              console.log(err);
-          });
-      })
-      .catch((err) => {
-        // eslint-disable-next-line
-            console.log(err);
-      });
-  };
-
-  return (
-    <div className="header">
-      <Link to="/">
-        Logo
+const Header = ({
+  authenticated, logout, history, user: { username },
+}) => (
+  <header className="header">
+    <div className="header__right-side">
+      <Link className="header__logo" to="/">
+        Track.it
       </Link>
-      <div>
-        {authenticated ? (
-          <div
-            onClick={() => logout()}
-            onKeyPress={() => {}}
-            role="button"
-            tabIndex={0}
-          >
-            SIGN OUT
-          </div>
-        ) : (
-          <Link to="/signin">
-            SIGN IN
-          </Link>
-        )}
-      </div>
+
+      <nav className="header__nav">
+        <Link className="header__nav__item" to="/daypicker">
+          Calendar
+        </Link>
+      </nav>
     </div>
-  );
+    <div className="header__left-side">
+      {authenticated ? (
+        <div className="dropdown">
+          <div className="dropdown__btn">
+            {username}
+          </div>
+          <div className="dropdown__content">
+            <div
+              onClick={() => logout(history)}
+              onKeyPress={() => {}}
+              role="button"
+              tabIndex={0}
+            >
+              SIGN OUT
+            </div>
+          </div>
+        </div>
+      ) : (
+        <Link className="header__signin" to="/signin">
+          SIGN IN
+        </Link>
+      )}
+    </div>
+  </header>
+);
+
+Header.defaultProps = {
+  user: { username: '' },
 };
 
+const {
+  bool, func, shape, string,
+} = PropTypes;
+
 Header.propTypes = {
-  authenticated: PropTypes.bool.isRequired,
+  authenticated: bool.isRequired,
+  logout: func.isRequired,
+  history: shape({
+    push: func,
+  }).isRequired,
+  user: shape({
+    username: string,
+  }),
 };
 
 const mapStateToProps = createStructuredSelector({
   authenticated: selectAuthenticated,
+  user: selectUser,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+  logout: (history) => dispatch(logout(history)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withRouter(Header));

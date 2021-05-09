@@ -11,3 +11,8 @@ export const selectAuthenticated = createSelector(
   [selectSession],
   (session) => session.authenticated,
 );
+
+export const selectChecked = createSelector(
+  [selectSession],
+  (session) => session.checked,
+);

@@ -2,64 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import { withRouter } from 'react-router-dom';
-import { sessionService } from 'redux-react-session';
-import axios from 'axios';
+import { connect } from 'react-redux';
 
-const Daypicker = ({ history }) => {
+import { openRoutineDay } from '../redux/session/session.actions';
+
+const Daypicker = ({ history, openRoutineDay }) => {
   const onClickDay = (day) => {
-    sessionService.loadSession()
-      .then(({ token }) => {
-        axios({
-          method: 'post',
-          url: 'http://localhost:3000/routines',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          data: {
-            data: {
-              attributes: {
-                day: day.toISOString().substring(0, 10),
-              },
-            },
-          },
-        })
-          .then(({ data: { data: { id } } }) => {
-            history.push(`/routine/${id}`);
-          })
-          .catch(() => {
-            axios({
-              method: 'get',
-              url: 'http://localhost:3000/routines',
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-              data: {
-                data: {
-                  attributes: {
-                    day: day.toISOString().substring(0, 10),
-                  },
-                },
-              },
-            })
-              .then(({ data: { data: routines } }) => {
-                const routine = routines
-                  .find((routine) => routine.attributes.day === day.toISOString().substring(0, 10));
-
-                if (routine) {
-                  history.push(`/routine/${routine.id}`);
-                } else {
-                  history.push('/not-found');
-                }
-              })
-              .catch(() => {
-                history.push('/not-found');
-              });
-          });
-      })
-      .catch(() => {
-        history.push('signin');
-      });
-    history.push();
+    openRoutineDay(day, history);
   };
 
   return (
@@ -69,10 +18,20 @@ const Daypicker = ({ history }) => {
   );
 };
 
+const { shape, func } = PropTypes;
+
 Daypicker.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
+  history: shape({
+    push: func,
   }).isRequired,
+  openRoutineDay: func.isRequired,
 };
 
-export default withRouter(Daypicker);
+const mapDispatchToProps = (dispatch) => ({
+  openRoutineDay: (day, history) => dispatch(openRoutineDay(day, history)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(withRouter(Daypicker));
