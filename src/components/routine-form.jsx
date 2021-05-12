@@ -5,14 +5,30 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
 import FormInputText from './form-input-text';
+import FormInputNumber from './form-input-number';
 
 const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) => {
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
-  const [sets, setSets] = useState(0);
-  const [reps, setReps] = useState(0);
+  const [sets, setSets] = useState(1);
+  const [reps, setReps] = useState(1);
   const [rest, setRest] = useState(0);
   const [tempo, setTempo] = useState('');
+
+  const incrementSets = () => {
+    setSets((prev) => prev + 1);
+  };
+
+  const decrementSets = () => {
+    setSets((prev) => prev - 1);
+  };
+  const incrementReps = () => {
+    setReps((prev) => prev + 1);
+  };
+
+  const decrementReps = () => {
+    setReps((prev) => prev - 1);
+  };
 
   const setDeafault = () => {
     setName('');
@@ -87,19 +103,21 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
           />
         </div>
         <div className="routine-form__left">
-          <input
-            name="sets"
-            type="number"
-            onChange={({ target: { value } }) => setSets(value)}
+          <FormInputNumber
+            id="sets"
+            handleChange={({ target: { value } }) => setSets(value)}
             value={sets}
-            required
+            increment={incrementSets}
+            decrement={decrementSets}
+            label="Sets"
           />
-          <input
-            name="reps"
-            type="number"
-            onChange={({ target: { value } }) => setReps(value)}
+          <FormInputNumber
+            id="reps"
+            handleChange={({ target: { value } }) => setReps(value)}
             value={reps}
-            required
+            increment={incrementReps}
+            decrement={decrementReps}
+            label="Reps"
           />
           <input
             name="rest"
