@@ -19,7 +19,7 @@ const FormInputNumber = ({
       id={id}
       type="number"
       min="1"
-      max="99"
+      max="200"
       onChange={handleChange}
       value={value}
       required

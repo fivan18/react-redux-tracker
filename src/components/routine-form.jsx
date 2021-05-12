@@ -12,7 +12,7 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
   const [link, setLink] = useState('');
   const [sets, setSets] = useState(1);
   const [reps, setReps] = useState(1);
-  const [rest, setRest] = useState(0);
+  const [rest, setRest] = useState(60);
   const [tempo, setTempo] = useState('');
 
   const incrementSets = () => {
@@ -28,6 +28,14 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
 
   const decrementReps = () => {
     setReps((prev) => prev - 1);
+  };
+
+  const incrementRest = () => {
+    setRest((prev) => prev + 1);
+  };
+
+  const decrementRest = () => {
+    setRest((prev) => prev - 1);
   };
 
   const setDeafault = () => {
@@ -119,12 +127,13 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
             decrement={decrementReps}
             label="Reps"
           />
-          <input
-            name="rest"
-            type="number"
-            onChange={({ target: { value } }) => setRest(value)}
+          <FormInputNumber
+            id="rest"
+            handleChange={({ target: { value } }) => setRest(value)}
             value={rest}
-            required
+            increment={incrementRest}
+            decrement={decrementRest}
+            label="Rest(sec)"
           />
           <input
             type="submit"

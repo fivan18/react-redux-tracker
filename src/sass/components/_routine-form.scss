@@ -27,6 +27,8 @@ $animation-duration: 0.4s;
   }
 
   &__form-text__label {
+    @include label-active();
+
     display: block;
     font-weight: normal;
     left: 0;
