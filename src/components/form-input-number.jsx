@@ -8,7 +8,7 @@ const FormInputNumber = ({
     <label htmlFor={id}>{label}</label>
     <span
       onClick={decrement}
-      onKeyPress={() => {}}
+      onKeyPress={decrement}
       role="link"
       tabIndex={0}
       className="form-input-number__decrement"
@@ -26,7 +26,7 @@ const FormInputNumber = ({
     />
     <span
       onClick={increment}
-      onKeyPress={() => {}}
+      onKeyPress={increment}
       role="link"
       tabIndex={0}
       className="form-input-number__increment"
