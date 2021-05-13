@@ -4,13 +4,39 @@ import { sessionService } from 'redux-react-session';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
+import FormInputText from './form-input-text';
+import FormInputNumber from './form-input-number';
+
 const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) => {
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
-  const [sets, setSets] = useState(0);
-  const [reps, setReps] = useState(0);
-  const [rest, setRest] = useState(0);
+  const [sets, setSets] = useState(1);
+  const [reps, setReps] = useState(1);
+  const [rest, setRest] = useState(60);
   const [tempo, setTempo] = useState('');
+
+  const incrementSets = () => {
+    setSets((prev) => prev + 1);
+  };
+
+  const decrementSets = () => {
+    setSets((prev) => prev - 1);
+  };
+  const incrementReps = () => {
+    setReps((prev) => prev + 1);
+  };
+
+  const decrementReps = () => {
+    setReps((prev) => prev - 1);
+  };
+
+  const incrementRest = () => {
+    setRest((prev) => prev + 1);
+  };
+
+  const decrementRest = () => {
+    setRest((prev) => prev - 1);
+  };
 
   const setDeafault = () => {
     setName('');
@@ -60,54 +86,59 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <input
-          name="name"
-          type="text"
-          onChange={({ target: { value } }) => setName(value)}
-          value={name}
-          placeholder="Name"
-          required
-        />
-        <input
-          name="link"
-          type="text"
-          onChange={({ target: { value } }) => setLink(value)}
-          value={link}
-          placeholder="Link"
-        />
-        <input
-          name="sets"
-          type="number"
-          onChange={({ target: { value } }) => setSets(value)}
-          value={sets}
-          required
-        />
-        <input
-          name="reps"
-          type="number"
-          onChange={({ target: { value } }) => setReps(value)}
-          value={reps}
-          required
-        />
-        <input
-          name="rest"
-          type="number"
-          onChange={({ target: { value } }) => setRest(value)}
-          value={rest}
-          required
-        />
-        <input
-          name="tempo"
-          type="text"
-          onChange={({ target: { value } }) => setTempo(value)}
-          value={tempo}
-          placeholder="Tempo"
-          required
-        />
-        <input
-          type="submit"
-        />
+      <form onSubmit={onSubmit} className="routine-form">
+        <div className="routine-form__right">
+          <FormInputText
+            id="name"
+            componentClassName="routine-form"
+            handleChange={({ target: { value } }) => setName(value)}
+            value={name}
+            label="Name"
+          />
+          <FormInputText
+            id="link"
+            componentClassName="routine-form"
+            handleChange={({ target: { value } }) => setLink(value)}
+            value={link}
+            label="Link"
+          />
+          <FormInputText
+            id="tempo"
+            componentClassName="routine-form"
+            handleChange={({ target: { value } }) => setTempo(value)}
+            value={tempo}
+            label="Tempo"
+          />
+        </div>
+        <div className="routine-form__left">
+          <FormInputNumber
+            id="sets"
+            handleChange={({ target: { value } }) => setSets(value)}
+            value={sets}
+            increment={incrementSets}
+            decrement={decrementSets}
+            label="Sets"
+          />
+          <FormInputNumber
+            id="reps"
+            handleChange={({ target: { value } }) => setReps(value)}
+            value={reps}
+            increment={incrementReps}
+            decrement={decrementReps}
+            label="Reps"
+          />
+          <FormInputNumber
+            id="rest"
+            handleChange={({ target: { value } }) => setRest(value)}
+            value={rest}
+            increment={incrementRest}
+            decrement={decrementRest}
+            label="Rest(sec)"
+          />
+          <input
+            type="submit"
+          />
+        </div>
       </form>
     </div>
   );
