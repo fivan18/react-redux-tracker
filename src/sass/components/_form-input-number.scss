@@ -1,4 +1,10 @@
 .form-input-number {
+  margin-right: 1rem;
+
+  & label {
+    margin-right: 0.5rem;
+  }
+
   & input,
   &__increment,
   &__decrement {
