@@ -12,13 +12,48 @@ $animation-duration: 0.4s;
 }
 
 .routine-form {
-  display: flex;
-  flex-flow: row wrap;
+  background-color: #fff;
+  padding: 2rem 2rem;
+  border-radius: 0.2rem;
 
-  &__right,
+  &__btn-submit {
+    background-color: #addc91;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.6rem;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  & form {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
   &__left {
+    width: 40%;
     display: flex;
     flex-flow: column wrap;
+  }
+
+  &__right {
+    width: 60%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+
+    &__inputs {
+      display: flex;
+      flex-flow: row wrap;
+      margin-bottom: 3rem;
+    }
   }
 
   &__form-text {

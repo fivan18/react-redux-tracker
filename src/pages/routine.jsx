@@ -45,7 +45,7 @@ const Routine = ({ match: { params: { routineId } }, history }) => {
   }, [refresh]);
 
   return (
-    <div>
+    <div className="routine">
       <RoutineForm setRefresh={setRefresh} />
       <RoutineCollection exercises={exercises} />
     </div>

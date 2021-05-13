@@ -85,9 +85,9 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit} className="routine-form">
-        <div className="routine-form__right">
+    <div className="routine-form">
+      <form onSubmit={onSubmit}>
+        <div className="routine-form__left">
           <FormInputText
             id="name"
             componentClassName="routine-form"
@@ -110,32 +110,35 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
             label="Tempo"
           />
         </div>
-        <div className="routine-form__left">
-          <FormInputNumber
-            id="sets"
-            handleChange={({ target: { value } }) => setSets(value)}
-            value={sets}
-            increment={incrementSets}
-            decrement={decrementSets}
-            label="Sets"
-          />
-          <FormInputNumber
-            id="reps"
-            handleChange={({ target: { value } }) => setReps(value)}
-            value={reps}
-            increment={incrementReps}
-            decrement={decrementReps}
-            label="Reps"
-          />
-          <FormInputNumber
-            id="rest"
-            handleChange={({ target: { value } }) => setRest(value)}
-            value={rest}
-            increment={incrementRest}
-            decrement={decrementRest}
-            label="Rest(sec)"
-          />
+        <div className="routine-form__right">
+          <div className="routine-form__right__inputs">
+            <FormInputNumber
+              id="sets"
+              handleChange={({ target: { value } }) => setSets(value)}
+              value={sets}
+              increment={incrementSets}
+              decrement={decrementSets}
+              label="Sets"
+            />
+            <FormInputNumber
+              id="reps"
+              handleChange={({ target: { value } }) => setReps(value)}
+              value={reps}
+              increment={incrementReps}
+              decrement={decrementReps}
+              label="Reps"
+            />
+            <FormInputNumber
+              id="rest"
+              handleChange={({ target: { value } }) => setRest(value)}
+              value={rest}
+              increment={incrementRest}
+              decrement={decrementRest}
+              label="Rest(sec)"
+            />
+          </div>
           <input
+            className="routine-form__btn-submit"
             type="submit"
           />
         </div>
