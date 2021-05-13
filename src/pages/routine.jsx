@@ -8,6 +8,7 @@ import RoutineForm from '../components/routine-form';
 import RoutineCollection from '../components/routine-collection';
 
 const Routine = ({ match: { params: { routineId } }, history }) => {
+  const [date, setDate] = useState(' ');
   const [exercises, setExercises] = useState([]);
   const [refresh, setRefresh] = useState(1 + Math.random() * (100 - 1));
 
@@ -25,6 +26,17 @@ const Routine = ({ match: { params: { routineId } }, history }) => {
         })
           .then(({ data: { data } }) => {
             if (mounted) {
+              axios({
+                method: 'get',
+                url: `http://localhost:3000/routines/${routineId}`,
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              })
+                .then(({ data: { data: { attributes: { day } } } }) => {
+                  setDate(new Date(`${day}T00:00:00`).toDateString());
+                })
+                .catch(() => history.push('/not-found'));
               setExercises(data);
             }
           })
@@ -47,6 +59,7 @@ const Routine = ({ match: { params: { routineId } }, history }) => {
   return (
     <div className="routine">
       <RoutineForm setRefresh={setRefresh} />
+      <h2>{date}</h2>
       <RoutineCollection exercises={exercises} />
     </div>
   );

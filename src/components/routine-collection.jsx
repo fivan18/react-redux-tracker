@@ -34,12 +34,11 @@ const ExerciseCollection = ({
   };
 
   return (
-    <div>
+    <div className="routine-collection">
       {exercises.map(({
         id,
         attributes: {
           name,
-          link,
           sets,
           reps,
           rest,
@@ -47,18 +46,21 @@ const ExerciseCollection = ({
         },
       }) => (
         <div
+          className="routine-collection__item"
           onClick={() => handleClick(name)}
           onKeyPress={() => {}}
           role="link"
           tabIndex={0}
           key={id}
         >
-          <div>{name}</div>
-          <div>{link}</div>
-          <div>{sets}</div>
-          <div>{reps}</div>
-          <div>{rest}</div>
-          <div>{tempo}</div>
+          <div>
+            {`${name} (${tempo})`}
+          </div>
+          <div>
+            {sets}
+            &rarr;
+            {`${reps} with ${rest} sec. rest time`}
+          </div>
         </div>
       ))}
     </div>
@@ -75,7 +77,6 @@ ExerciseCollection.propTypes = {
       id: string,
       attributes: shape({
         name: string,
-        link: string,
         sets: number,
         reps: number,
         rest: number,

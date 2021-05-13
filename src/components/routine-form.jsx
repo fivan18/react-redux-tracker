@@ -41,9 +41,9 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
   const setDeafault = () => {
     setName('');
     setLink('');
-    setSets(0);
-    setReps(0);
-    setRest(0);
+    setSets(1);
+    setReps(1);
+    setRest(60);
     setTempo('');
   };
 
