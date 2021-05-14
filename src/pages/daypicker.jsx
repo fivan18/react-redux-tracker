@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import 'react-calendar/dist/Calendar.css';
 
 import { openRoutineDay } from '../redux/session/session.actions';
 
@@ -12,9 +13,11 @@ const Daypicker = ({ history, openRoutineDay }) => {
   };
 
   return (
-    <Calendar
-      onClickDay={onClickDay}
-    />
+    <div className="daypicker">
+      <Calendar
+        onClickDay={onClickDay}
+      />
+    </div>
   );
 };
 
