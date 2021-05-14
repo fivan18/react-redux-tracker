@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import RoutineForm from '../components/routine-form';
 import RoutineCollection from '../components/routine-collection';
+import { apiUrl } from '../utils';
 
 const Routine = ({ match: { params: { routineId } }, history }) => {
   const [date, setDate] = useState(' ');
@@ -19,7 +20,7 @@ const Routine = ({ match: { params: { routineId } }, history }) => {
       .then(({ token }) => {
         axios({
           method: 'get',
-          url: `http://localhost:3000/routines/${routineId}/exercises`,
+          url: `${apiUrl}/routines/${routineId}/exercises`,
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -28,7 +29,7 @@ const Routine = ({ match: { params: { routineId } }, history }) => {
             if (mounted) {
               axios({
                 method: 'get',
-                url: `http://localhost:3000/routines/${routineId}`,
+                url: `${apiUrl}/routines/${routineId}`,
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },

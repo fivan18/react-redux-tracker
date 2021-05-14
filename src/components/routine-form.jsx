@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import FormInputText from './form-input-text';
 import FormInputNumber from './form-input-number';
+import { apiUrl } from '../utils';
 
 const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) => {
   const [name, setName] = useState('');
@@ -54,7 +55,7 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
       .then(({ token }) => {
         axios({
           method: 'post',
-          url: `http://localhost:3000/routines/${routineId}/exercises`,
+          url: `${apiUrl}/routines/${routineId}/exercises`,
           headers: {
             Authorization: `Bearer ${token}`,
           },
