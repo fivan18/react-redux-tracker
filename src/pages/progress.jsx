@@ -6,10 +6,11 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 
-import { selectExercises } from '../redux/exercise/exercise.selectors';
+import { selectExercisesForProgress, selectExerciseForProgress } from '../redux/exercise/exercise.selectors';
 
-const Progress = ({ exercises }) => (
-  <div>
+const Progress = ({ exercises, exercise: { attributes: { name } } }) => (
+  <div className="progress">
+    <h2 className="progress__header">{name}</h2>
     <BarChart
       width={500}
       height={300}
@@ -50,18 +51,28 @@ const Progress = ({ exercises }) => (
   </div>
 );
 
+const {
+  string, number, arrayOf, shape,
+} = PropTypes;
+
 Progress.propTypes = {
-  exercises: PropTypes.arrayOf(
-    PropTypes.shape({
-      day: PropTypes.string,
-      sets: PropTypes.number,
-      reps: PropTypes.number,
+  exercises: arrayOf(
+    shape({
+      day: string,
+      sets: number,
+      reps: number,
     }),
   ).isRequired,
+  exercise: shape({
+    attributes: shape({
+      name: string,
+    }),
+  }).isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  exercises: selectExercises,
+  exercises: selectExercisesForProgress,
+  exercise: selectExerciseForProgress,
 });
 
 export default connect(
