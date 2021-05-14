@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Chalisthenics track
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> An app to track your progress for chalisthenics routine. 
 
-## Available Scripts
+<p align="center">
+    <img src="image.png">
+</p>
 
-In the project directory, you can run:
+## Built With
 
-### `yarn start`
+- [create-react-app](https://create-react-app.dev/)
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Live Demo
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[https://chalisthenics-tracker.herokuapp.com/](https://chalisthenics-tracker.herokuapp.com/)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `yarn build`
+To get a local copy up and running follow these simple example steps.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Make sure you have installed [Node JS](https://nodejs.org/en/). If not, follow this [guide](https://www.geeksforgeeks.org/installation-of-node-js-on-linux/) for Linux or this [one](https://treehouse.github.io/installation-guides/mac/node-mac.html) for Mac OS.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Setup
 
-### `yarn eject`
+Download the project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    $ git clone https://github.com/fivan18/react-redux-tracker.git
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install the dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    $ npm install
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Install
 
-## Learn More
+To modify the code and see the changes on live go to the project's root directory and run:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    $ npm start
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Usage
 
-### Code Splitting
+Open the next link [http://localhost:3000/](http://localhost:3000/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Run tests
 
-### Analyzing the Bundle Size
+[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) has been used to test the project. Run the next command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    $ npm test
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To deploy this project on heroku follow the next [instructions](https://github.com/mars/create-react-app-buildpack).
 
-### `yarn build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Authors
+
+👤 **Ivan Ulises Guzman Sanchez**
+
+- Github: [@fivan18](https://github.com/fivan18)
+- Twitter: [@fivanunam](https://twitter.com/fivanunam)
+- Linkedin: [fivan](https://www.linkedin.com/in/fivan)
+
+## Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/fivan18/react-redux-tracker/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+- Design Idea by [Gregoire Vella](https://www.behance.net/gregoirevella) 
