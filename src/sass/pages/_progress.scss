@@ -1,0 +1,11 @@
+.progress {
+  padding: 3rem 10rem;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+
+  &__header {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
