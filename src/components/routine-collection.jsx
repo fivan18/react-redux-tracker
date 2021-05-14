@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { addExercises } from '../redux/exercise/exercise.actions';
+import { apiUrl } from '../utils';
 
 const ExerciseCollection = ({
   exercises, addExercises, history,
@@ -15,7 +16,7 @@ const ExerciseCollection = ({
       .then(({ token }) => {
         axios({
           method: 'get',
-          url: `http://localhost:3000/progress/${name}`,
+          url: `${apiUrl}/progress/${name}`,
           headers: {
             Authorization: `Bearer ${token}`,
           },
