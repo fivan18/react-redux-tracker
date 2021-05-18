@@ -41,6 +41,8 @@ $animation-duration: 0.4s;
     width: 40%;
     display: flex;
     flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
   }
 
   &__right {

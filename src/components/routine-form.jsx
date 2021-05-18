@@ -4,17 +4,16 @@ import { sessionService } from 'redux-react-session';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
-import FormInputText from './form-input-text';
 import FormInputNumber from './form-input-number';
-import { apiUrl } from '../utils';
+import FormInputSelect from './form-input-select';
+import { apiUrl, selectExercises, selectTempo } from '../utils';
 
 const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) => {
-  const [name, setName] = useState('');
-  const [link, setLink] = useState('');
+  const [name, setName] = useState('none');
   const [sets, setSets] = useState(1);
   const [reps, setReps] = useState(1);
   const [rest, setRest] = useState(60);
-  const [tempo, setTempo] = useState('');
+  const [tempo, setTempo] = useState('none');
 
   const incrementSets = () => {
     setSets((prev) => prev + 1);
@@ -41,7 +40,6 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
 
   const setDeafault = () => {
     setName('');
-    setLink('');
     setSets(1);
     setReps(1);
     setRest(60);
@@ -63,7 +61,7 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
             data: {
               attributes: {
                 name,
-                link,
+                link: 'none',
                 sets,
                 reps,
                 rest,
@@ -89,26 +87,19 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
     <div className="routine-form">
       <form onSubmit={onSubmit}>
         <div className="routine-form__left">
-          <FormInputText
+          <FormInputSelect
             id="name"
-            componentClassName="routine-form"
             handleChange={({ target: { value } }) => setName(value)}
             value={name}
-            label="Name"
+            label="Exercise"
+            options={selectExercises}
           />
-          <FormInputText
-            id="link"
-            componentClassName="routine-form"
-            handleChange={({ target: { value } }) => setLink(value)}
-            value={link}
-            label="Link"
-          />
-          <FormInputText
+          <FormInputSelect
             id="tempo"
-            componentClassName="routine-form"
             handleChange={({ target: { value } }) => setTempo(value)}
             value={tempo}
             label="Tempo"
+            options={selectTempo}
           />
         </div>
         <div className="routine-form__right">
