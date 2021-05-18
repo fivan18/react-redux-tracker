@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -10,44 +10,79 @@ import { logout } from '../redux/session/session.actions';
 
 const Header = ({
   authenticated, logout, history, user: { username },
-}) => (
-  <header className="header">
-    <div className="header__right-side">
-      <Link className="header__logo" to="/">
-        Track.it
-      </Link>
+}) => {
+  const [hidden, setHidden] = useState(true);
 
-      <nav className="header__nav">
-        <Link className="header__nav__item" to="/daypicker">
-          Calendar
-        </Link>
-      </nav>
-    </div>
-    <div className="header__left-side">
-      {authenticated ? (
-        <div className="dropdown">
-          <div className="dropdown__btn">
-            {username}
-          </div>
-          <div className="dropdown__content">
-            <div
-              onClick={() => logout(history)}
-              onKeyPress={() => {}}
-              role="button"
-              tabIndex={0}
-            >
-              SIGN OUT
+  return (
+    <div>
+      <header className="header">
+        <div className="header__right-side">
+          <Link className="header__logo" to="/">
+            Track.it
+          </Link>
+
+          <nav className="header__nav">
+            <Link className="header__nav__item" to="/daypicker">
+              Calendar
+            </Link>
+          </nav>
+        </div>
+        <div className="header__left-side">
+          {authenticated ? (
+            <div className="dropdown">
+              <div className="dropdown__btn">
+                {username}
+              </div>
+              <div className="dropdown__content">
+                <div
+                  onClick={() => logout(history)}
+                  onKeyPress={() => {}}
+                  role="button"
+                  tabIndex={0}
+                >
+                  SIGN OUT
+                </div>
+              </div>
             </div>
+          ) : (
+            <Link className="header__signin" to="/signin">
+              SIGN IN
+            </Link>
+          )}
+          <div
+            className="header__navigation__button"
+            onClick={() => setHidden((hidden) => !hidden)}
+            onKeyPress={() => {}}
+            role="button"
+            tabIndex={0}
+          >
+            <span className="header__navigation__icon">&nbsp;</span>
           </div>
         </div>
-      ) : (
-        <Link className="header__signin" to="/signin">
-          SIGN IN
+      </header>
+      <nav className={`header__nav__responsive ${hidden ? 'hidden' : ''}`}>
+        <Link className="header__nav__responsive__item" to="/daypicker">
+          Calendar
         </Link>
-      )}
+        {authenticated ? (
+          <div
+            className="header__nav__responsive__item"
+            onClick={() => logout(history)}
+            onKeyPress={() => {}}
+            role="button"
+            tabIndex={0}
+          >
+            SIGN OUT
+          </div>
+        ) : (
+          <Link className="header__nav__responsive__item" to="/signin">
+            SIGN IN
+          </Link>
+        )}
+      </nav>
     </div>
-  </header>
-);
+  );
+};
 
 Header.defaultProps = {
   user: { username: '' },
