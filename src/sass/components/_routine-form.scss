@@ -37,6 +37,14 @@ $animation-duration: 0.4s;
     flex-flow: row wrap;
   }
 
+  @media (max-width: 1200px) {
+    & form {
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   &__left {
     width: 40%;
     display: flex;
@@ -56,6 +64,21 @@ $animation-duration: 0.4s;
       display: flex;
       flex-flow: row wrap;
       margin-bottom: 3rem;
+    }
+
+    @media (max-width: 1200px) {
+      &__inputs {
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    &__left,
+    &__right {
+      width: 100%;
     }
   }
 
@@ -132,5 +155,11 @@ $animation-duration: 0.4s;
       border-bottom: 2px solid $primary-color;
       transform: scaleX(150);
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .routine-form {
+    padding: 2rem 0;
   }
 }

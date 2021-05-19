@@ -5,6 +5,14 @@
     margin-right: 0.5rem;
   }
 
+  @media (max-width: 1200px) {
+    & label {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+  }
+
   & input,
   &__increment,
   &__decrement {

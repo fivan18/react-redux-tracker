@@ -1,3 +1,9 @@
 .routine {
   padding: 3rem 10rem;
 }
+
+@media (max-width: 768px) {
+  .routine {
+    padding: 2rem 0;
+  }
+}
