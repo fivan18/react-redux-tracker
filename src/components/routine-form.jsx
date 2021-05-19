@@ -38,7 +38,7 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
     setRest((prev) => prev - 1);
   };
 
-  const setDeafault = () => {
+  const setDefault = () => {
     setName('');
     setSets(1);
     setReps(1);
@@ -71,7 +71,7 @@ const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) 
           },
         })
           .then(() => {
-            setDeafault();
+            setDefault();
             setRefresh(1 + Math.random() * (100 - 1));
           })
           .catch(() => {
