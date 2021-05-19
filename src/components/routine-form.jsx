@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import FormInputNumber from './form-input-number';
 import FormInputSelect from './form-input-select';
-import { apiUrl, selectExercises, selectTempo } from '../utils';
+import { apiUrl, selectExercises, selectTempo } from '../utilities/utils';
 
 const RoutineForm = ({ match: { params: { routineId } }, history, setRefresh }) => {
   const [name, setName] = useState('none');

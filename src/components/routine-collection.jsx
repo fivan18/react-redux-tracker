@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { addExercises } from '../redux/exercise/exercise.actions';
-import { apiUrl } from '../utils';
+import { apiUrl } from '../utilities/utils';
 
 const ExerciseCollection = ({
   exercises, addExercises, history,

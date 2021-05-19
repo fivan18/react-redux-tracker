@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import RoutineForm from '../components/routine-form';
 import RoutineCollection from '../components/routine-collection';
-import { apiUrl } from '../utils';
+import { apiUrl } from '../utilities/utils';
 
 const Routine = ({ match: { params: { routineId } }, history }) => {
   const [date, setDate] = useState(' ');

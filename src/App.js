@@ -12,7 +12,7 @@ import Daypicker from './pages/daypicker';
 import Routine from './pages/routine';
 import Header from './layout/header';
 import Progress from './pages/progress';
-import PrivateRoute from './components/private-route';
+import PrivateRoute from './utilities/private-route';
 import { selectChecked, selectAuthenticated } from './redux/session/session.selectors';
 
 const App = ({ authenticated, checked }) => (

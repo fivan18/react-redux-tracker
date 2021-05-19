@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import FormInput from '../components/form-input';
 import SubmitButton from '../components/submit-button';
-import { apiUrl } from '../utils';
+import { apiUrl } from '../utilities/utils';
 
 const SignUp = ({ history }) => {
   const [username, setUsername] = useState('');
