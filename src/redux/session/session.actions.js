@@ -55,8 +55,14 @@ export const logout = (history) => () => sessionService.loadSession()
     history.push('/not-found');
   });
 
-export const openRoutineDay = (day, history) => () => sessionService.loadSession()
+export const openRoutineDay = (date, history) => () => sessionService.loadSession()
   .then(({ token }) => {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    const strDate = `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
+
     axios({
       method: 'post',
       url: `${apiUrl}/routines`,
@@ -66,7 +72,7 @@ export const openRoutineDay = (day, history) => () => sessionService.loadSession
       data: {
         data: {
           attributes: {
-            day: day.toISOString().substring(0, 10),
+            day: strDate,
           },
         },
       },
@@ -84,15 +90,14 @@ export const openRoutineDay = (day, history) => () => sessionService.loadSession
           data: {
             data: {
               attributes: {
-                day: day.toISOString().substring(0, 10),
+                day: strDate,
               },
             },
           },
         })
           .then(({ data: { data: routines } }) => {
             const routine = routines
-              .find((routine) => routine.attributes.day === day.toISOString()
-                .substring(0, 10));
+              .find((routine) => routine.attributes.day === strDate);
 
             if (routine) {
               history.push(`/routine/${routine.id}`);
