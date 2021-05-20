@@ -1,7 +1,7 @@
 import { sessionService } from 'redux-react-session';
 import axios from 'axios';
 
-import { apiUrl } from '../../utils';
+import { apiUrl } from '../../utilities/utils';
 
 export const login = (username, password, history) => () => axios({
   method: 'post',
