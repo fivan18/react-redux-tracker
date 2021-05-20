@@ -1,4 +1,4 @@
-export const apiUrl = 'http://localhost:3000';
+export const apiUrl = 'https://evening-peak-09291.herokuapp.com/';
 
 export const selectExercises = [
   'Scapular pull',
