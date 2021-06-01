@@ -1,0 +1,122 @@
+.header {
+  font-size: 1.8rem;
+  height: 7rem;
+  background-color: #62b5e5;
+  color: #fff;
+  border-bottom: 1px solid #f4f2f2;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    font-family: HelveticaNeueBold, sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 3rem;
+    color: #fff;
+    margin-right: 3rem;
+  }
+
+  &__nav {
+    &__item {
+      color: #fff;
+
+      &:hover {
+        border-bottom: 1px solid #fff;
+      }
+    }
+
+    &__responsive {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      background-color: white;
+      border-top: none;
+      padding: 1rem 0;
+
+      &__item {
+        cursor: pointer;
+        color: black;
+        font-family: inherit;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgb(212, 209, 209);
+      }
+    }
+
+    @media (min-width: 769px) {
+      &__responsive {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__nav {
+      display: none;
+    }
+  }
+
+  &__right-side {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__signin {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    &__signin {
+      display: none;
+    }
+  }
+
+  &__navigation__button {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  @media (min-width: 769px) {
+    &__navigation__button {
+      display: none;
+    }
+  }
+
+  &__navigation__icon {
+    position: relative;
+    margin-top: 3.5rem;
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: white;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    &::before { top: -0.8rem; }
+    &::after { top: 0.8rem; }
+  }
+
+  &__navigation__button:hover &__navigation__icon::before {
+    top: -1rem;
+  }
+
+  &__navigation__button:hover &__navigation__icon::after {
+    top: 1rem;
+  }
+}

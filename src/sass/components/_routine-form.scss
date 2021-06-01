@@ -1,0 +1,165 @@
+$primary-color: #b11adc;
+$animation-duration: 0.4s;
+
+@mixin label-inactive() {
+  font-size: 1.2rem;
+  transform: translateY(0);
+}
+
+@mixin label-active() {
+  font-size: 0.75rem;
+  transform: translateY(-14px);
+}
+
+.routine-form {
+  background-color: #fff;
+  padding: 2rem 2rem;
+  border-radius: 0.2rem;
+  margin-bottom: 3rem;
+
+  &__btn-submit {
+    background-color: #addc91;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.6rem;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  & form {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  @media (max-width: 1200px) {
+    & form {
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__left {
+    width: 40%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__right {
+    width: 60%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+
+    &__inputs {
+      display: flex;
+      flex-flow: row wrap;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 1200px) {
+      &__inputs {
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    &__left,
+    &__right {
+      width: 100%;
+    }
+  }
+
+  &__form-text {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  &__form-text__label {
+    @include label-active();
+
+    display: block;
+    font-weight: normal;
+    left: 0;
+    margin: 0;
+    padding: 18px 12px 0;
+    position: absolute;
+    top: 0;
+    transition: all $animation-duration;
+    width: 100%;
+  }
+
+  &__form-text__control {
+    background: #eee;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  &__form-text__bar {
+    border-bottom: 2px solid $primary-color;
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    transform: scaleX(0);
+    transition: all $animation-duration;
+    width: 1%;
+  }
+
+  &__form-text__input {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #999;
+    color: #333;
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 24px;
+    outline: 0;
+    padding: 0 12px 10px 12px;
+    width: 100%;
+
+    // IE 10-11
+    &:-ms-input-placeholder ~ .routine-form__form-text__label {
+      @include label-inactive();
+    }
+    // All other browsers except Edge
+    &:placeholder-shown ~ .routine-form__form-text__label {
+      @include label-inactive();
+    }
+
+    &:focus ~ .routine-form__form-text__label {
+      color: $primary-color;
+
+      @include label-active();
+    }
+
+    &:focus ~ .routine-form__form-text__bar {
+      border-bottom: 2px solid $primary-color;
+      transform: scaleX(150);
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .routine-form {
+    padding: 2rem 0;
+  }
+}

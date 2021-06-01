@@ -8,10 +8,22 @@
 
 html {
   font-size: 62.5%;
+  font-family: HelveticaNeueLight, sans-serif;
 }
 
 body {
   box-sizing: border-box;
-  padding: 3rem;
-  background-color: #eee;
+  padding: 0;
+  background: linear-gradient(to bottom, #f4f4f4, #f1f1f1);
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+.hidden {
+  display: none !important;
 }

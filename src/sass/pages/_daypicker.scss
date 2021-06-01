@@ -1,0 +1,12 @@
+.daypicker {
+  padding: 3rem 10rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .daypicker {
+    padding: 2rem 0;
+  }
+}

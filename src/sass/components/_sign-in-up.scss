@@ -1,0 +1,132 @@
+.sign-in-up {
+  &__container {
+    height: 75vh;
+    display: grid;
+    font-family: inherit;
+    place-items: center;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    width: 100%;
+    max-width: 400px;
+    padding: 2em;
+    border-radius: 2px;
+  }
+
+  &__card-title {
+    font-size: 40px;
+    color: #67899c;
+    align-items: center;
+  }
+
+  &__card-subtitle {
+    color: #67899c;
+  }
+
+  &__card-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 1.5rem 0 1rem 0;
+  }
+
+  &__card-input-container {
+    position: relative;
+    margin: 0.5rem 0 2rem;
+    width: 100%;
+  }
+
+  &__card-form label {
+    color: #b1bcc2;
+  }
+
+  &__card-input-container input::placeholder {
+    color: #b1bcc2;
+  }
+
+  &__card-input-container input,
+  &__card-button {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+  }
+
+  &__card-input-container input {
+    padding: 1em 2em 1em 4em;
+    font-size: 14px;
+    color: #67899c;
+    background: #f4f4f4;
+    box-shadow:
+      -10px -10px 20px rgb(255, 255, 255),
+      10px 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  &__card-input-container input:focus {
+    box-shadow:
+      inset -5px -5px 10px rgb(255, 255, 255),
+      inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  &__card-button {
+    background: #addc91;
+    padding: 1em;
+    color: #f4f4f4;
+    cursor: pointer;
+    box-shadow:
+      -10px -10px 20px rgb(255, 255, 255),
+      10px 10px 20px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.5rem;
+  }
+
+  &__card-button:focus,
+  &__card-button:hover {
+    box-shadow:
+      inset -5px -5px 10px rgba(255, 255, 255, 0.4),
+      inset 5px 5px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  &__signup {
+    text-align: center;
+    font-size: 12px;
+    color: #b1bcc2;
+  }
+
+  &__signup a {
+    color: #67899c;
+  }
+
+  &__signup a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &__card-input-container::after {
+    font-family: inherit;
+    font-weight: 900;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    left: 1.3rem;
+    top: 0.8rem;
+    font-size: 20px;
+    color: #b6b6b6;
+  }
+
+  &__card-input-container.username::after {
+    content: "\f007";
+  }
+
+  &__card-input-container.password::after {
+    content: "\f023";
+  }
+}
